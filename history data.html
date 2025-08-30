@@ -1,0 +1,384 @@
+.finishToken(135, str);
+      return;
+    }
+    if (isDecimal) {
+      this.finishToken(136, str);
+      return;
+    }
+    const val = isOctal ? parseInt(str, 8) : parseFloat(str);
+    this.finishToken(134, val);
+  }
+  readCodePoint(throwOnInvalid) {
+    const {
+      code,
+      pos
+    } = readCodePoint(this.input, this.state.pos, this.state.lineStart, this.state.curLine, throwOnInvalid, this.errorHandlers_readCodePoint);
+    this.state.pos = pos;
+    return code;
+  }
+  readString(quote) {
+    const {
+      str,
+      pos,
+      curLine,
+      lineStart
+    } = readStringContents(quote === 34 ? "double" : "single", this.input, this.state.pos + 1, this.state.lineStart, this.state.curLine, this.errorHandlers_readStringContents_string);
+    this.state.pos = pos + 1;
+    this.state.lineStart = lineStart;
+    this.state.curLine = curLine;
+    this.finishToken(133, str);
+  }
+  readTemplateContinuation() {
+    if (!this.match(8)) {
+      this.unexpected(null, 8);
+    }
+    this.state.pos--;
+    this.readTemplateToken();
+  }
+  readTemplateToken() {
+    const opening = this.input[this.state.pos];
+    const {
+      str,
+      firstInvalidLoc,
+      pos,
+      curLine,
+      lineStart
+    } = readStringContents("template", this.input, this.state.pos + 1, this.state.lineStart, this.state.curLine, this.errorHandlers_readStringContents_template);
+    this.state.pos = pos + 1;
+    this.state.lineStart = lineStart;
+    this.state.curLine = curLine;
+    if (firstInvalidLoc) {
+      this.state.firstInvalidTemplateEscapePos = new Position(firstInvalidLoc.curLine, firstInvalidLoc.pos - firstInvalidLoc.lineStart, firstInvalidLoc.pos);
+    }
+    if (this.input.codePointAt(pos) === 96) {
+      this.finishToken(24, firstInvalidLoc ? null : opening + str + "`");
+    } else {
+      this.state.pos++;
+      this.finishToken(25, firstInvalidLoc ? null : opening + str + "${");
+    }
+  }
+  recordStrictModeErrors(toParseError, at) {
+    const index = at.index;
+    if (this.state.strict && !this.state.strictErrors.has(index)) {
+      this.raise(toParseError, at);
+    } else {
+      this.state.strictErrors.set(index, [toParseError, at]);
+    }
+  }
+  readWord1(firstCode) {
+    this.state.containsEsc = false;
+    let word = "";
+    const start = this.state.pos;
+    let chunkStart = this.state.pos;
+    if (firstCode !== undefined) {
+      this.state.pos += firstCode <= 0xffff ? 1 : 2;
+    }
+    while (this.state.pos < this.length) {
+      const ch = this.codePointAtPos(this.state.pos);
+      if (isIdentifierChar(ch)) {
+        this.state.pos += ch <= 0xffff ? 1 : 2;
+      } else if (ch === 92) {
+        this.state.containsEsc = true;
+        word += this.input.slice(chunkStart, this.state.pos);
+        const escStart = this.state.curPosition();
+        const identifierCheck = this.state.pos === start ? isIdentifierStart : isIdentifierChar;
+        if (this.input.charCodeAt(++this.state.pos) !== 117) {
+          this.raise(Errors.MissingUnicodeEscape, this.state.curPosition());
+          chunkStart = this.state.pos - 1;
+          continue;
+        }
+        ++this.state.pos;
+        const esc = this.readCodePoint(true);
+        if (esc !== null) {
+          if (!identifierCheck(esc)) {
+            this.raise(Errors.EscapedCharNotAnIdentifier, escStart);
+          }
+          word += String.fromCodePoint(esc);
+        }
+        chunkStart = this.state.pos;
+      } else {
+        break;
+      }
+    }
+    return word + this.input.slice(chunkStart, this.state.pos);
+  }
+  readWord(firstCode) {
+    const word = this.readWord1(firstCode);
+    const type = keywords$1.get(word);
+    if (type !== undefined) {
+      this.finishToken(type, tokenLabelName(type));
+    } else {
+      this.finishToken(132, word);
+    }
+  }
+  checkKeywordEscapes() {
+    const {
+      type
+    } = this.state;
+    if (tokenIsKeyword(type) && this.state.containsEsc) {
+      this.raise(Errors.InvalidEscapedReservedWord, this.state.startLoc, {
+        reservedWord: tokenLabelName(type)
+      });
+    }
+  }
+  raise(toParseError, at, details = {}) {
+    const loc = at instanceof Position ? at : at.loc.start;
+    const error = toParseError(loc, details);
+    if (!this.options.errorRecovery) throw error;
+    if (!this.isLookahead) this.state.errors.push(error);
+    return error;
+  }
+  raiseOverwrite(toParseError, at, details = {}) {
+    const loc = at instanceof Position ? at : at.loc.start;
+    const pos = loc.index;
+    const errors = this.state.errors;
+    for (let i = errors.length - 1; i >= 0; i--) {
+      const error = errors[i];
+      if (error.loc.index === pos) {
+        return errors[i] = toParseError(loc, details);
+      }
+      if (error.loc.index < pos) break;
+    }
+    return this.raise(toParseError, at, details);
+  }
+  updateContext(prevType) {}
+  unexpected(loc, type) {
+    throw this.raise(Errors.UnexpectedToken, loc != null ? loc : this.state.startLoc, {
+      expected: type ? tokenLabelName(type) : null
+    });
+  }
+  expectPlugin(pluginName, loc) {
+    if (this.hasPlugin(pluginName)) {
+      return true;
+    }
+    throw this.raise(Errors.MissingPlugin, loc != null ? loc : this.state.startLoc, {
+      missingPlugin: [pluginName]
+    });
+  }
+  expectOnePlugin(pluginNames) {
+    if (!pluginNames.some(name => this.hasPlugin(name))) {
+      throw this.raise(Errors.MissingOneOfPlugins, this.state.startLoc, {
+        missingPlugin: pluginNames
+      });
+    }
+  }
+  errorBuilder(error) {
+    return (pos, lineStart, curLine) => {
+      this.raise(error, buildPosition(pos, lineStart, curLine));
+    };
+  }
+}
+class ClassScope {
+  constructor() {
+    this.privateNames = new Set();
+    this.loneAccessors = new Map();
+    this.undefinedPrivateNames = new Map();
+  }
+}
+class ClassScopeHandler {
+  constructor(parser) {
+    this.parser = void 0;
+    this.stack = [];
+    this.undefinedPrivateNames = new Map();
+    this.parser = parser;
+  }
+  current() {
+    return this.stack[this.stack.length - 1];
+  }
+  enter() {
+    this.stack.push(new ClassScope());
+  }
+  exit() {
+    const oldClassScope = this.stack.pop();
+    const current = this.current();
+    for (const [name, loc] of Array.from(oldClassScope.undefinedPrivateNames)) {
+      if (current) {
+        if (!current.undefinedPrivateNames.has(name)) {
+          current.undefinedPrivateNames.set(name, loc);
+        }
+      } else {
+        this.parser.raise(Errors.InvalidPrivateFieldResolution, loc, {
+          identifierName: name
+        });
+      }
+    }
+  }
+  declarePrivateName(name, elementType, loc) {
+    const {
+      privateNames,
+      loneAccessors,
+      undefinedPrivateNames
+    } = this.current();
+    let redefined = privateNames.has(name);
+    if (elementType & 3) {
+      const accessor = redefined && loneAccessors.get(name);
+      if (accessor) {
+        const oldStatic = accessor & 4;
+        const newStatic = elementType & 4;
+        const oldKind = accessor & 3;
+        const newKind = elementType & 3;
+        redefined = oldKind === newKind || oldStatic !== newStatic;
+        if (!redefined) loneAccessors.delete(name);
+      } else if (!redefined) {
+        loneAccessors.set(name, elementType);
+      }
+    }
+    if (redefined) {
+      this.parser.raise(Errors.PrivateNameRedeclaration, loc, {
+        identifierName: name
+      });
+    }
+    privateNames.add(name);
+    undefinedPrivateNames.delete(name);
+  }
+  usePrivateName(name, loc) {
+    let classScope;
+    for (classScope of this.stack) {
+      if (classScope.privateNames.has(name)) return;
+    }
+    if (classScope) {
+      classScope.undefinedPrivateNames.set(name, loc);
+    } else {
+      this.parser.raise(Errors.InvalidPrivateFieldResolution, loc, {
+        identifierName: name
+      });
+    }
+  }
+}
+class ExpressionScope {
+  constructor(type = 0) {
+    this.type = type;
+  }
+  canBeArrowParameterDeclaration() {
+    return this.type === 2 || this.type === 1;
+  }
+  isCertainlyParameterDeclaration() {
+    return this.type === 3;
+  }
+}
+class ArrowHeadParsingScope extends ExpressionScope {
+  constructor(type) {
+    super(type);
+    this.declarationErrors = new Map();
+  }
+  recordDeclarationError(ParsingErrorClass, at) {
+    const index = at.index;
+    this.declarationErrors.set(index, [ParsingErrorC31 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V150H0V109Z" fill="url(#paint0_linear_tide)"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_tide" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="var(--primary-500)" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="var(--primary-500)" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-around border-t border-gray-700 pt-2">
+<p class="text-xs font-medium text-gray-400">Mon</p>
+<p class="text-xs font-medium text-gray-400">Tue</p>
+<p class="text-xs font-medium text-gray-400">Wed</p>
+<p class="text-xs font-medium text-gray-400">Thu</p>
+<p class="text-xs font-medium text-gray-400">Fri</p>
+<p class="text-xs font-medium text-gray-400">Sat</p>
+<p class="text-xs font-medium text-gray-400">Sun</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-2xl border border-gray-800 bg-gray-800/50 p-6">
+<div class="flex items-center justify-between">
+<p class="text-lg font-medium text-white">Tide Level Anomalies</p>
+<div class="flex items-center gap-1 text-sm text-gray-400">
+<span>Last 7 Days</span>
+<span class="font-medium text-red-400">-8%</span>
+</div>
+</div>
+<p class="text-4xl font-bold text-white">-0.5m</p>
+<div class="h-60">
+<svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 41C18.1538 41 18.1538 129 36.3077 129C54.4615 129 54.4615 109 72.6154 109C90.7692 109 90.7692 57 108.923 57C127.077 57 127.077 117 145.231 117C163.385 117 163.385 49 181.538 49C199.692 49 199.692 89 217.846 89C236 89 236 105 254.154 105C272.308 105 272.308 29 290.462 29C308.615 29 308.615 1 326.769 1C344.923 1 344.923 149 363.077 149C381.231 149 381.231 69 399.385 69C417.538 69 417.538 21 435.692 21C453.846 21 453.846 125 472 125" stroke="#f87171" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0 41C18.1538 41 18.1538 129 36.3077 129C54.4615 129 54.4615 109 72.6154 109C90.7692 109 90.7692 57 108.923 57C127.077 57 127.077 117 145.231 117C163.385 117 163.385 49 181.538 49C199.692 49 199.692 89 217.846 89C236 89 236 105 254.154 105C272.308 105 272.308 29 290.462 29C308.615 29 308.615 1 326.769 1C344.923 1 344.923 149 363.077 149C381.231 149 381.231 69 399.385 69C417.538 69 417.538 21 435.692 21C453.846 21 453.846 125 472 125V150H0V41Z" fill="url(#paint0_linear_anomaly)"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_anomaly" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#f87171" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="#f87171" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-around border-t border-gray-700 pt-2">
+<p class="text-xs font-medium text-gray-400">Mon</p>
+<p class="text-xs font-medium text-gray-400">Tue</p>
+<p class="text-xs font-medium text-gray-400">Wed</p>
+<p class="text-xs font-medium text-gray-400">Thu</p>
+<p class="text-xs font-medium text-gray-400">Fri</p>
+<p class="text-xs font-medium text-gray-400">Sat</p>
+<p class="text-xs font-medium text-gray-400">Sun</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-2xl border border-gray-800 bg-gray-800/50 p-6">
+<div class="flex items-center justify-between">
+<p class="text-lg font-medium text-white">Wind Speed Over Time</p>
+<div class="flex items-center gap-1 text-sm text-gray-400">
+<span>Last 7 Days</span>
+<span class="font-medium text-green-400">+12%</span>
+</div>
+</div>
+<p class="text-4xl font-bold text-white">+5.3m/s</p>
+<div class="h-60">
+<svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#818cf8" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V150H0V109Z" fill="url(#paint0_linear_wind)"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_wind" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#818cf8" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="#818cf8" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-around border-t border-gray-700 pt-2">
+<p class="text-xs font-medium text-gray-400">Mon</p>
+<p class="text-xs font-medium text-gray-400">Tue</p>
+<p class="text-xs font-medium text-gray-400">Wed</p>
+<p class="text-xs font-medium text-gray-400">Thu</p>
+<p class="text-xs font-medium text-gray-400">Fri</p>
+<p class="text-xs font-medium text-gray-400">Sat</p>
+<p class="text-xs font-medium text-gray-400">Sun</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-2xl border border-gray-800 bg-gray-800/50 p-6">
+<div class="flex items-center justify-between">
+<p class="text-lg font-medium text-white">Water Quality Over Time</p>
+<div class="flex items-center gap-1 text-sm text-gray-400">
+<span>Last 7 Days</span>
+<span class="font-medium text-green-400">+10%</span>
+</div>
+</div>
+<p class="text-4xl font-bold text-white">+0.8pH</p>
+<div class="h-60">
+<svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 41C18.1538 41 18.1538 129 36.3077 129C54.4615 129 54.4615 109 72.6154 109C90.7692 109 90.7692 57 108.923 57C127.077 57 127.077 117 145.231 117C163.385 117 163.385 49 181.538 49C199.692 49 199.692 89 217.846 89C236 89 236 105 254.154 105C272.308 105 272.308 29 290.462 29C308.615 29 308.615 1 326.769 1C344.923 1 344.923 149 363.077 149C381.231 149 381.231 69 399.385 69C417.538 69 417.538 21 435.692 21C453.846 21 453.846 125 472 125" stroke="#fbbf24" stroke-linecap="round" stroke-width="3"></path>
+<path d="M0 41C18.1538 41 18.1538 129 36.3077 129C54.4615 129 54.4615 109 72.6154 109C90.7692 109 90.7692 57 108.923 57C127.077 57 127.077 117 145.231 117C163.385 117 163.385 49 181.538 49C199.692 49 199.692 89 217.846 89C236 89 236 105 254.154 105C272.308 105 272.308 29 290.462 29C308.615 29 308.615 1 326.769 1C344.923 1 344.923 149 363.077 149C381.231 149 381.231 69 399.385 69C417.538 69 417.538 21 435.692 21C453.846 21 453.846 125 472 125V150H0V41Z" fill="url(#paint0_linear_quality)"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_quality" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#fbbf24" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="#fbbf24" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-around border-t border-gray-700 pt-2">
+<p class="text-xs font-medium text-gray-400">Mon</p>
+<p class="text-xs font-medium text-gray-400">Tue</p>
+<p class="text-xs font-medium text-gray-400">Wed</p>
+<p class="text-xs font-medium text-gray-400">Thu</p>
+<p class="text-xs font-medium text-gray-400">Fri</p>
+<p class="text-xs font-medium text-gray-400">Sat</p>
+<p class="text-xs font-medium text-gray-400">Sun</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-50: #fef2f2;
+        --primary-100: #fee2e2;
+        --primary-200: #fecaca;
+        --primary-300: #fca5a5;
+        --primary-400: #f87171;
+        --primary-500: #ef4444;
+        --primary-600: #dc2626;
+        --primary-700: #b91c1c;
+        --primary-800: #991b1b;
+        --primary-900: #7f1d1d;
+        --primary-950: #450a0a;
+      }
+    </style>
+</head>
+<body>
+<div class="relative flex size-full min-h-screen flex-col bg-[#181111] dark group/design-root overflow-x-hidden" style="--select-button-svg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(185,157,158)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z%27%3e%3c/path%3e%3c/svg%3e'); font-family: &quot;Public Sans&quot;, &quot;Noto Sans&quot;, sans-serif;">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#392829] px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<svg class="size-8 text-primary-500" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Coastal Threat Alert</h1>
+</div>
+<nav class="hidden items-center gap-9 lg:flex">
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="#">Dashboard</a>
+<a class="text-sm font-medium text-white" href="#">Incidents</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="#">Resources</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="#">Reports</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-white" href="#">Settings</a>
+</nav>
+<div class="flex flex-1 items-center justify-end gap-4">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-[#392829] text-white/80 transition-colors hover:text-white">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+</svg>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnKQwtqE6LYrbdmU6RGdy0Sks5WqPEDJBpS1f5KrS1abqX_ZJlEaUR_Xr0whiKxt-4t5Z-b-wu5BcrgHfdJ2WQNSXfR7HBh_8JofyvwlK7AUmgcqJRNnOvycVLrSTTDwyDUhosfdIIq6l3vpkmEyr0V9xl3gCBk5BwlZS8TbBEboBPs8-e_aRdznTgvLKVqCIf5Zje3o-QE8JvrTh8fuRgiDHOSA5RRe-b8yU3ckGgTkM_dS2cmTT-6NQshTinTwbVxvjlQXFWGJQl");'></div>
+</div>
+</header>
+<main class="grid flex-1 grid-cols-1 gap-8 p-6 lg:grid-cols-3">
+<div class="col-span-1 flex flex-col gap-6 lg:col-span-2">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl font-bold tracking-tight text-white">Incident Details: Coastal Erosion at Sandy Shores</h1>
+<p class="text-base text-white/60">INC-2024-07-20-001</p>
+</div>
+<div class="rounded-lg border border-[#392829] bg-[#271c1c]/50">
+<div class="border-b border-[#392829] p-4">
+<div class="flex border-b border-[#543b3c]">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary-500 px-4 pb-3 pt-2 text-sm font-bold text-white" href="#"> Details </a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent px-4 pb-3 pt-2 text-sm font-bold text-[#b99d9e] hover:border-white/20 hover:text-white" href="#"> Communication </a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent px-4 pb-3 pt-2 text-sm font-bold text-[#b99d9e] hover:border-white/20 hover:text-white" href="#"> Updates </a>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6 p-6 md:grid-cols-2">
+<div class="flex flex-col gap-1.5">
+<p class="text-sm font-medium text-white/80">Incident Name</p>
+<p class="text-base text-white">Coastal Erosion at Sandy Shores</p>
+</div>
+<div class="flex flex-col gap-1.5">
+<p class="text-sm font-medium text-white/80">Type</p>
+<p class="text-base text-white">Coastal Erosion</p>
+</div>
+<div class="col-span-1 flex flex-col gap-1.5 md:col-span-2">
+<p class="text-sm font-medium text-white/80">Description</p>
+<p class="text-base text-white">Significant erosion observed along the coastline at Sandy Shores, threatening nearby infrastructure and natural habitats. The erosion appears to be accelerating due to recent storm activity.</p>
+</div>
+<div class="flex flex-col gap-1.5">
+<p class="text-sm font-medium text-white/80">Severity</p>
+<div class="flex items-center gap-2">
+<div class="h-2.5 w-2.5 rounded-full bg-red-500"></div>
+<p class="text-base font-semibold text-red-500">High</p>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<p class="text-sm font-medium text-white/80">Status</p>
+<p class="text-base text-white">Active</p>
+</div>
+<div class="flex flex-col gap-1.5">
+<p class="text-sm font-medium text-white/80">Start Time</p>
+<p class="text-base text-white">2024-07-20 10:00 AM</p>
+</div>
+<div class="flex flex-col gap-1.5">
+<p class="text-sm font-medium text-white/80">End Time</p>
+<p class="text-base text-white/60">Ongoing</p>
+</div>
+<div class="col-span-1 flex flex-col gap-1.5 md:col-span-2">
+<p class="text-sm font-medium text-white/80">Affected Area</p>
+<div class="mt-2 w-full aspect-video rounded-md bg-cover bg-center bg-no-repeat object-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDM2hmDI_p9A_uPuRHsh9nbuWPF2QN3D0ihWy3289iWwwBlYRKr6R-A6uV1icThx0AK49QaOBYbMgrGAvLc2H2WSlFXGqC6claWtJSbPPKkMf2nwUQXVCAWabGXH4Wk_5_ZhpuIG4MoSdXdSiI1K0sJuI_sy9ONAW2qJwKpe1-7Ch5EXsgYVfxRTbod98__lMZLfDuolLZQt04LtGps0PRhl4_ODqjlK5Z43uzZ2a_4lLyetezo22qRt-3i7bM6olOyl2J_tDz4XoVN");'></div>
+</div>
+<div class="col-span-1 flex flex-col gap-1.5 md:col-span-2">
+<p class="text-sm font-medium text-white/80">Assigned Teams/Resources</p>
+<p class="text-base text-white">Coastal Response Team Alpha, Marine Biology Unit, Geotechnical Engineering Team</p>
+</div>
+</div>
+<div class="flex flex-wrap justify-end gap-3 border-t border-[#392829] p-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-[#392829] text-sm font-bold text-white transition-colors hover:bg-[#4a3435]">
+<span class="truncate">Edit Incident</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-md h-10 px-4 bg-primary-600 text-sm font-bold text-white transition-colors hover:bg-primary-700">
+<span class="truncate">Close Incident</span>
+</button>
+</div>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-6">
+<div class="rounded-lg border border-[#392829] bg-[#271c1c]/50">
+<h2 class="border-b border-[#392829] p-4 text-lg font-bold text-white">Communication Log</h2>
+<div class="flex flex-col divide-y divide-[#392829]">
+<div class="flex w-full items-start gap-4 p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDn42PyHjsBf88l9ECaFMa9AfG1Vqlm4tjvDrXl3kOJNQLIipN9dsWG0xiAo7lTSabXFMQ05swZJZEj9RAxvT5_NoGFlfpzxC1jzpbuiy3XU2--S0i54UjBZK2acdRg3xE3iYl8O4fJZfwJEH2hsYMz7rQdPmGV19dxu3z9GZwArXyYXL7ptSjlnp2hrjFhVUE9rHxOB0cr8umXpqSPjVzPQJxVePnfhrkxV4OrPEXMgBnhwCbpe5hAKyaKoHE5o5DarD5ZnDWkX1IX");'></div>
+<div class="flex h-full flex-1 flex-col items-start">
+<div class="flex w-full flex-wrap items-center gap-x-2">
+<p class="text-sm font-bold text-white">Sarah Chen</p>
+<p class="text-xs text-[#b99d9e]">2024-07-20 10:15 AM</p>
+</div>
+<p class="mt-1 text-sm text-white/90">Initial report received. Coastal erosion confirmed at Sandy Shores. Severity assessed as high. Response teams dispatched.</p>
+</div>
+</div>
+<div class="flex w-full items-start gap-4 p-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDneDi_hpXFX-3ynHB0-LT_jGfWXVRYdv02pRNSDfZE03W3eiqTh9BY2csakdAUYuLcBjDa8VVzxxhDf0irwv0HZsNMmslf0x4iAwm_9_dOPmIR63tQ5SLXIJ7smr_FfvnLCXoioylK4AR8rOXivPmurV2at8q18LJNQA3I9tfW8HfUvWIUR-cTT1JM01UL55PRduYJo3NwA0Sfm1qB8aFGzWOzLwjB9q3RKp8Qk56754QaNyRWeS_4mqnDOBn0vPc4kh9Qg4OmwgQp");'></div>
+<div class="flex h-full flex-1 flex-col items-start">
+<div class="flex w-full flex-wrap items-center gap-x-2">
+<p class="text-sm font-bold text-white">Mark Johnson</p>
+<p class="text-xs text-[#b99d9e]">2024-07-20 11:30 AM</p>
+</div>
+<p class="mt-1 text-sm text-white/90">Response Team A on site. Assessing damage and implementing temporary stabilization measures.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-lg border border-[#392829] bg-[#271c1c]/50">
+<h2 class="border-b border-[#392829] p-4 text-lg font-bold text-white">Timeline</h2>
+<div class="p-6">
+<div class="relative">
+<div class="absolute left-3.5 top-3.5 h-full w-0.5 bg-[#543b3c]"></div>
+<div class="relative mb-6 flex items-start gap-4">
+<div class="z-10 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary-600 text-white">
+<svg fill="currentColor" height="16px" viewBox="0 0 256 256" width="16px" xmlns="http://www.w3.org/2000/svg">
+<path d="M232,128a104,104,0,0,1-208,0c0-41,23.81-78.36,60.66-95.27a8,8,0,0,1,6.68,14.54C60.15,61.59,40,93.27,40,128a88,88,0,0,0,176,0c0-34.73-20.15-66.41-51.34-80.73a8,8,0,0,1,6.68-14.54C208.19,49.64,232,87,232,128Z"></path>
+</svg>
+</div>
+<div>
+<p class="font-medium text-white">Incident Reported</p>
+<p class="text-sm text-[#b99d9e]">2024-07-20 10:00 AM</p>
+</div>
+</div>
+<div class="relative mb-6 flex items-start gap-4">
+<div class="z-10 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary-600 text-white">
+<svg fill="currentColor" height="16px" viewBox="0 0 256 256" width="16px" xmlns="http://www.w3.org/2000/svg">
+<path d="M247.42,117l-14-35A15.93,15.93,0,0,0,218.58,72H184V64a8,8,0,0,0-8-8H24A16,16,0,0,0,8,72V184a16,16,0,0,0,16,16H41a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,247.42,117ZM184,88h34.58l9.6,24H184ZM24,72H168v64H24ZM72,208a16,16,0,1,1,16-16A16,16,0,0,1,72,208Zm81-24H103a32,32,0,0,0-62,0H24V152H168v12.31A32.11,32.11,0,0,0,153,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,184,208Zm48-24H215a32.06,32.06,0,0,0-31-24V128h48Z"></path>
+</svg>
+</div>
+<div>
+<p class="font-medium text-white">Response Team Dispatched</p>
+<p class="text-sm text-[#b99d9e]">2024-07-20 10:30 AM</p>
+</div>
+</div>
+<div class="relative flex items-start gap-4">
+<div class="z-10 flex size-7 shrink-0 items-center justify-center rounded-full bg-primary-600 text-white">
+<svg fill="currentColor" height="16px" viewBox="0 0 256 256" width="16px" xmlns="http://www.w3.org/2000/svg">
+<path d="M251.34,112,183.88,44.08a96.1,96.1,0,0,0-135.77,0l-.09.09L34.25,58.4A8,8,0,0,0,45.74,69.53L59.47,55.35a79.92,79.92,0,0,1,18.71-13.9L124.68,88l-96,96a16,16,0,0,0,0,22.63l20.69,20.69a16,16,0,0,0,22.63,0l96-96,14.34,14.34h0L200,163.3a16,16,0,0,0,22.63,0l28.69-28.69A16,16,0,0,0,251.34,112ZM60.68,216,40,195.31l68-68L128.68,148ZM162.34,114.32,140,136.67,119.31,116l22.35-22.35a8,8,0,0,0,0-11.32L94.32,35a80,80,0,0,1,78.23,20.41l44.22,44.51L188,128.66l-14.34-14.34A8,8,0,0,0,162.34,114.32Zm49,37.66-12-12L228,111.25l12,12Z"></path>
+</svg>
+</div>
+<div>
+<p class="font-medium text-white">Stabilization Measures Initiated</p>
+<p class="text-sm text-[#b99d9e]">2024-07-20 11:45 AM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

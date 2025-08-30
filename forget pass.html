@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coastal Threat Alert System - Forgot Password</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #38e07b;
+      }
+      body {
+        font-family: 'Spline Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-[#111714] text-white">
+<div class="flex flex-col min-h-screen">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#29382f] px-10 py-4">
+<div class="flex items-center gap-3">
+<svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h1 class="text-xl font-bold">Coastal Threat Alert System</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors" href="#">Home</a>
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors" href="#">Alerts</a>
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-[var(--primary-color)] transition-colors" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-[#29382f] text-white hover:bg-[#3a4c40] transition-colors">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+</svg>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTmrtVGA3ZEpIngKGwMtP_8BlTqGYdRiqOCTEt4yhM6e0gBoqSk1TGYSFXOjNDEgiAunEhojrN9QHxKbyyeXD3VDTLyK8Nj-a1WreFOK2ldpM1ytX1Y_UYSnRKDcInyf_-T2Fk4kGfivA78N69nzmuHqyLWigazjngWTQ1MYiC7boAuylcX5brtlaIewMSU6lUiP8pAKXBtjfEeysEzvy1XyNWJjdBG9D4fnZgo8Prgkt0PU8XIb1egnj9bsgNTIrGGvZqrt47nUZb");'></div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
+<div class="w-full max-w-md space-y-8 bg-[#1a221d] p-8 rounded-lg shadow-lg">
+<div class="text-center">
+<h2 class="text-3xl font-bold text-white">Forgot Password?</h2>
+<p class="mt-2 text-sm text-[#9eb7a8]">
+              No worries, we'll send you reset instructions.
+            </p>
+</div>
+<form action="#" class="mt-8 space-y-6" method="POST">
+<div class="rounded-md shadow-sm -space-y-px">
+<div>
+<label class="sr-only" for="email-address">Email address</label>
+<input autocomplete="email" class="relative block w-full appearance-none rounded-md border border-[#29382f] bg-[#111714] px-3 py-3 text-white placeholder-gray-500 focus:z-10 focus:border-[var(--primary-color)] focus:outline-none focus:ring-[var(--primary-color)] sm:text-sm" id="email-address" name="email" placeholder="Enter your email" required="" type="email"/>
+</div>
+</div>
+<div>
+<button class="group relative flex w-full justify-center rounded-md border border-transparent bg-[var(--primary-color)] py-3 px-4 text-sm font-semibold text-[#111714] hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-offset-2 focus:ring-offset-[#1a221d] transition-colors" type="submit">
+                Send Reset Link
+              </button>
+</div>
+</form>
+<div class="text-center">
+<a class="text-sm font-medium text-[#9eb7a8] hover:text-[var(--primary-color)] transition-colors" href="#">
+<svg class="inline-block h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+              Back to Sign In
+            </a>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

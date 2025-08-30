@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coastal Threat Alert System - Create Account</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #1193d4;
+      }
+      body {
+        font-family: 'Public Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-[#111618] text-white">
+<div class="flex flex-col min-h-screen">
+<header class="border-b border-solid border-b-[#283339]">
+<nav class="container mx-auto flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-3">
+<svg class="h-8 w-8 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0ZM26.25 11.25C26.25 10.4216 25.5784 9.75 24.75 9.75C23.9216 9.75 23.25 10.4216 23.25 11.25V24.75H11.25C10.4216 24.75 9.75 25.4216 9.75 26.25C9.75 27.0784 10.4216 27.75 11.25 27.75H23.25V36.75C23.25 37.5784 23.9216 38.25 24.75 38.25C25.5784 38.25 26.25 37.5784 26.25 36.75V27.75H36.75C37.5784 27.75 38.25 27.0784 38.25 26.25C38.25 25.4216 37.5784 24.75 36.75 24.75H26.25V11.25Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h1 class="text-xl font-bold">Coastal Threat Alert</h1>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-sm hover:text-[var(--primary-color)] transition-colors" href="#">Home</a>
+<a class="text-sm hover:text-[var(--primary-color)] transition-colors" href="#">Alerts</a>
+<a class="text-sm hover:text-[var(--primary-color)] transition-colors" href="#">Resources</a>
+<a class="text-sm hover:text-[var(--primary-color)] transition-colors" href="#">Contact</a>
+<a class="rounded-md bg-[#283339] px-4 py-2 text-sm font-medium hover:bg-opacity-80 transition-colors" href="#">Login</a>
+</div>
+<button class="md:hidden">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</nav>
+</header>
+<main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="w-full max-w-md space-y-8 bg-[#1a2226] p-10 rounded-lg shadow-lg">
+<div>
+<h2 class="text-center text-3xl font-bold tracking-tight text-white">Create your account</h2>
+<p class="mt-2 text-center text-sm text-[#9db0b9]">
+              And stay ahead of the tides.
+            </p>
+</div>
+<form action="#" class="space-y-6" method="POST">
+<div>
+<label class="sr-only" for="full-name">Full Name</label>
+<input autocomplete="name" class="form-input block w-full rounded-md border-0 bg-[#283339] py-3 px-4 text-white placeholder-[#9db0b9] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)] sm:text-sm" id="full-name" name="name" placeholder="Full Name" required="" type="text"/>
+</div>
+<div>
+<label class="sr-only" for="email-address">Email address</label>
+<input autocomplete="email" class="form-input block w-full rounded-md border-0 bg-[#283339] py-3 px-4 text-white placeholder-[#9db0b9] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)] sm:text-sm" id="email-address" name="email" placeholder="Email address" required="" type="email"/>
+</div>
+<div>
+<label class="sr-only" for="password">Password</label>
+<input autocomplete="new-password" class="form-input block w-full rounded-md border-0 bg-[#283339] py-3 px-4 text-white placeholder-[#9db0b9] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)] sm:text-sm" id="password" name="password" placeholder="Password" required="" type="password"/>
+</div>
+<div>
+<label class="sr-only" for="confirm-password">Confirm Password</label>
+<input autocomplete="new-password" class="form-input block w-full rounded-md border-0 bg-[#283339] py-3 px-4 text-white placeholder-[#9db0b9] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--primary-color)] sm:text-sm" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required="" type="password"/>
+</div>
+<div>
+<button class="group relative flex w-full justify-center rounded-md border border-transparent bg-[var(--primary-color)] py-3 px-4 text-sm font-semibold text-white hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:ring-offset-2 focus:ring-offset-[#1a2226] transition-colors" type="submit">
+                Create Account
+              </button>
+</div>
+</form>
+<p class="text-center text-sm text-[#9db0b9]">
+            Already have an account?
+            <a class="font-medium text-[var(--primary-color)] hover:text-opacity-80 transition-colors" href="#">Log In</a>
+</p>
+</div>
+</main>
+</div>
+
+</body></html>

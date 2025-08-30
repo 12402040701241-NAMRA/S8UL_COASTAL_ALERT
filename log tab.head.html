@@ -1,0 +1,195 @@
+<html><head>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<meta charset="utf-8"/>
+<style type="text/tailwindcss">
+      :root {
+        --primary-50: #f0fdf4;
+        --primary-100: #dcfce7;
+        --primary-200: #bbf7d0;
+        --primary-300: #86efac;
+        --primary-400: #4ade80;
+        --primary-500: #22c55e;
+        --primary-600: #16a34a;
+        --primary-700: #15803d;
+        --primary-800: #166534;
+        --primary-900: #14532d;
+        --primary-950: #052e16;
+      }
+    </style>
+</head>
+<body>
+<div class="relative flex size-full min-h-screen flex-col bg-gray-950 dark group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-800 px-10 py-3">
+<div class="flex items-center gap-4 text-white">
+<svg class="size-6 text-primary-500" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Coastal Threat Alert</h2>
+</div>
+<div class="flex flex-1 justify-end gap-2">
+<nav class="flex items-center gap-2">
+<a class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800 hover:text-white" href="#">Dashboard</a>
+<a class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800 hover:text-white" href="#">Alerts</a>
+<a class="rounded-md bg-gray-800 px-3 py-2 text-sm font-medium text-white" href="#">Notifications</a>
+<a class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800 hover:text-white" href="#">Settings</a>
+</nav>
+<div class="ml-6 flex items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUBW7WQeImM0QJ2qzL6OKIMcKewRdiRZ82IkSLUc_yf9LbZbuirc0cnru_GEj7Q3vZ7RIj8kseJAIPwYl1cjo-faZzHW8AkFAl7IBR9l6dEuXyMzqKz3UjvD3j8zOCkFHljJsNzhoBENgy5_vBUppidl3XBIHaXwkubTaaQ4OpJT9t0OyjFFXuNxg98-f40ySMM1s4Ncm5ptMKx_hPSQMokYLSaWGvHgl8V_hZrqAiejBayH6d7i430f29VBO-MjfP6atseYu3A_ss");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 justify-center p-6 sm:p-10">
+<div class="layout-content-container flex w-full max-w-6xl flex-col">
+<div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-bold text-white">Notifications Log</h1>
+<p class="text-gray-400">Track all sent notifications, including status, recipient, type, and timestamp.</p>
+</div>
+</div>
+<div class="mt-8 flex flex-col gap-6">
+<div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+<div class="relative w-full max-w-sm">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3" data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input class="form-input w-full rounded-md border-gray-700 bg-gray-900 py-2 pl-10 text-white placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500" placeholder="Search notifications..." value=""/>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md bg-primary-500 px-3 text-sm font-medium text-white transition-colors hover:bg-primary-600">All</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-transparent px-3 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800 hover:text-white">Sent</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-transparent px-3 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800 hover:text-white">Delivered</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-md border border-gray-700 bg-transparent px-3 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800 hover:text-white">Failed</button>
+</div>
+</div>
+<div class="@container">
+<div class="overflow-hidden rounded-md border border-gray-800">
+<table class="w-full flex-1">
+<thead class="bg-gray-900">
+<tr>
+<th class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 whitespace-nowrap px-6 py-3 text-left text-sm font-medium text-white">Status</th>
+<th class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 whitespace-nowrap px-6 py-3 text-left text-sm font-medium text-white">Recipient</th>
+<th class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 whitespace-nowrap px-6 py-3 text-left text-sm font-medium text-white">Type</th>
+<th class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 whitespace-nowrap px-6 py-3 text-left text-sm font-medium text-white">Timestamp</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-800">
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-400">Sent</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Dr. Emily Carter</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">Email</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:00 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-primary-500/10 px-2.5 py-0.5 text-xs font-medium text-primary-400">Delivered</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Michael Johnson</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">SMS</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:05 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-red-500/10 px-2.5 py-0.5 text-xs font-medium text-red-400">Failed</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Sarah Williams</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">App Notification</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:10 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-400">Sent</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">David Lee</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">Email</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:15 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-primary-500/10 px-2.5 py-0.5 text-xs font-medium text-primary-400">Delivered</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Jessica Brown</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">SMS</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:20 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-400">Sent</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Robert Green</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">Email</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:25 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-primary-500/10 px-2.5 py-0.5 text-xs font-medium text-primary-400">Delivered</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Olivia Taylor</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">SMS</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:30 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-red-500/10 px-2.5 py-0.5 text-xs font-medium text-red-400">Failed</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Ethan Clark</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">App Notification</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:35 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-400">Sent</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Sophia Lewis</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">Email</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:40 AM</td>
+</tr>
+<tr class="transition-colors hover:bg-gray-900">
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 px-6 py-4">
+<span class="inline-flex items-center rounded-full bg-primary-500/10 px-2.5 py-0.5 text-xs font-medium text-primary-400">Delivered</span>
+</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 px-6 py-4 text-sm text-gray-300">Noah Walker</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 px-6 py-4 text-sm text-gray-300">SMS</td>
+<td class="table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 px-6 py-4 text-sm text-gray-300">2024-07-26 10:45 AM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<style>
+                  @container(max-width:120px) {
+                    .table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-120 {
+                      display: none;
+                    }
+                  }
+                  @container(max-width:240px) {
+                    .table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-240 {
+                      display: none;
+                    }
+                  }
+                  @container(max-width:360px) {
+                    .table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-360 {
+                      display: none;
+                    }
+                  }
+                  @container(max-width:480px) {
+                    .table-8425b5d9-4566-4033-8d2e-e8a87c9f8025-column-480 {
+                      display: none;
+                    }
+                  }
+                </style>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

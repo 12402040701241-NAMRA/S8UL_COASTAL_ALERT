@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coastal Threat Alert System - Settings</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --primary-50: #f0fdf4;
+            --primary-100: #dcfce7;
+            --primary-200: #bbf7d0;
+            --primary-300: #86efac;
+            --primary-400: #4ade80;
+            --primary-500: #22c55e;
+            --primary-600: #16a34a;
+            --primary-700: #15803d;
+            --primary-800: #166534;
+            --primary-900: #14532d;
+            --primary-950: #052e16;
+            --gray-50: #f7fafc;
+            --gray-100: #edf2f7;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e0;
+            --gray-400: #a0aec0;
+            --gray-500: #718096;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-800: #1a202c;
+            --gray-900: #111714;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input {
+            background-color: var(--gray-800);
+            border-color: var(--gray-700);
+            color: var(--gray-100);
+        }
+        .form-input:focus {
+            --tw-ring-color: var(--primary-500);
+            border-color: var(--primary-500);
+        }
+        .form-select {
+             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23a0aec0' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        }
+        .btn-primary {
+            background-color: var(--primary-600);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-700);
+        }
+        .nav-link.active {
+            color: var(--primary-400);
+            border-bottom: 2px solid var(--primary-400);
+            padding-bottom: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 flex-shrink-0 bg-gray-800 p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="text-primary-400 size-8">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clipPath>
+</defs>
+</svg>
+</div>
+<h1 class="text-xl font-bold text-white">Coastal Alert</h1>
+</div>
+<nav class="flex flex-col gap-4">
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white" href="#">
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 13h6v-2H4v2zm0 4h6v-2H4v2zm0-8h6V7H4v2zm8 2h12V7H12v2zm0 4h12v-2H12v2zm0 4h12v-2H12v2zM2 20h2V4H2v16z"></path></svg>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white" href="#">
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9v-2h2v2zm0-4H9V7h2v6zm4-3.5c0 .83-.67 1.5-1.5 1.5S13 14.33 13 13.5s.67-1.5 1.5-1.5.5.17.5.5H16c0-1.66-1.34-3-3-3s-3 1.34-3 3 1.34 3 3 3c.34 0 .65-.06.94-.18l1.06 1.06L16.48 15l-1.06-1.06c.64-.53 1.08-1.34 1.08-2.24V12h-1.5v-.5z"></path></svg>
+<span>Alerts</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 bg-gray-700 text-white font-semibold" href="#">
+<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"></path></svg>
+<span>Settings</span>
+</a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto">
+<header class="flex-shrink-0 bg-gray-900 border-b border-gray-700 flex items-center justify-end px-6 h-16">
+<div class="flex items-center gap-4">
+<button class="relative rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+<span class="sr-only">View notifications</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDlzybHtShmKxncoBLFsPNeTe0Kpkgp_QM0dIt0s3x4ua_5kDOyIMXC-wiKPNrNSoVsxIpOf3etMg28GE8pATGiXoi693ch4ukj0PuckV4tE-vyA0V02mfmb9id1XPQG-HA8Ep7ERIpZcdmC5IQi-K4L7BATSahya_PUFG7NuFizkqNqEAB3A-r8JFRLxlFq6vmbZknUkWul-IGDg6feRzzqfa26qbFXSAw3KKtB7ccLa27UHTw2KJPlPC0HmrQqL4472lBR_7N_iWq");'></div>
+</div>
+</div>
+</header>
+<div class="p-8 md:p-12">
+<div class="max-w-4xl mx-auto">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-white">Settings</h1>
+<p class="mt-1 text-gray-400">Manage system settings and configurations.</p>
+</div>
+<div class="space-y-12">
+<div class="border-b border-gray-700 pb-12">
+<h2 class="text-xl font-semibold leading-7 text-white">General Settings</h2>
+<p class="mt-1 text-sm leading-6 text-gray-400">Update your application's general information.</p>
+<div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+<div class="sm:col-span-4">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="app-name">Application Name</label>
+<div class="mt-2">
+<input class="form-input block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="app-name" name="app-name" type="text" value="Coastal Threat Alert System"/>
+</div>
+</div>
+<div class="sm:col-span-4">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="language">Default Language</label>
+<div class="mt-2">
+<select class="form-select block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="language" name="language">
+<option>English</option>
+<option>Spanish</option>
+<option>French</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-700 pb-12">
+<h2 class="text-xl font-semibold leading-7 text-white">Integration Settings</h2>
+<p class="mt-1 text-sm leading-6 text-gray-400">Configure integrations with external services.</p>
+<div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+<div class="sm:col-span-4">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="twilio-sid">Twilio Account SID</label>
+<div class="mt-2">
+<input class="form-input block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="twilio-sid" name="twilio-sid" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-4">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="twilio-token">Twilio Auth Token</label>
+<div class="mt-2">
+<input class="form-input block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="twilio-token" name="twilio-token" type="password"/>
+</div>
+</div>
+<div class="sm:col-span-4">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="supabase-url">Supabase URL</label>
+<div class="mt-2">
+<input class="form-input block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="supabase-url" name="supabase-url" type="url"/>
+</div>
+</div>
+<div class="sm:col-span-4">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="supabase-key">Supabase API Key</label>
+<div class="mt-2">
+<input class="form-input block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="supabase-key" name="supabase-key" type="password"/>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-700 pb-12">
+<h2 class="text-xl font-semibold leading-7 text-white">Data Retention Policy</h2>
+<p class="mt-1 text-sm leading-6 text-gray-400">Set how long to retain alert and log data.</p>
+<div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="alert-retention">Alert Data Retention (Days)</label>
+<div class="mt-2">
+<input class="form-input block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="alert-retention" name="alert-retention" type="number" value="30"/>
+</div>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium leading-6 text-gray-200" for="log-retention">Log Data Retention (Days)</label>
+<div class="mt-2">
+<input class="form-input block w-full rounded-md border-0 py-2.5 shadow-sm ring-1 ring-inset ring-gray-700 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6" id="log-retention" name="log-retention" type="number" value="90"/>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-xl font-semibold leading-7 text-white">Audit Logs</h2>
+<p class="mt-1 text-sm leading-6 text-gray-400">View logs of all administrative actions.</p>
+<div class="mt-6">
+<button class="btn-primary rounded-md px-4 py-2.5 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" type="button">View Audit Logs</button>
+</div>
+</div>
+</div>
+<div class="mt-12 flex items-center justify-end gap-x-6 border-t border-gray-700 pt-6">
+<button class="text-sm font-semibold leading-6 text-white" type="button">Cancel</button>
+<button class="btn-primary rounded-md px-4 py-2.5 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600" type="submit">Save Changes</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
